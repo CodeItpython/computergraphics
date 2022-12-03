@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+      //정점조명 shader
+      attribute  vec4 vPosition;
+      attribute  vec4 vColor;
+      varying vec4 fColor;
+      uniform mat4 r;
+      void main()
+      {
+        vec4 p;
+        gl_Position = r*vPosition;
+        fColor = vColor;
+      }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+      precision mediump float;
+      varying vec4 fColor;
+      void
+      main()
+      {
+          gl_FragColor = fColor;
+      }
+    </script>
+    <!-- webgl-utils.js는 웹사이트의 디렉터리에있는 context를 설정하는
+표준 유틸리티이다. -->
+    <script type="text/javascript" src="webgl-utils.js"></script>
+    <!-- initShader.js는 shader를 읽고, 링크, 컴파일 하는 js코드이다
+-->
+    <script type="text/javascript" src="initShaders.js"></script>
+    <!-- MV.js는 수학관련 벡터함수이고, 자체 행렬 벡터 패키지이다. -->
+    <script type="text/javascript" src="MV.js"></script>
+    <script type="text/javascript" src="track.js"></script>
+  </head>
+  <body>
+    <canvas id="gl-canvas" width="512" height="512">
+      Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+
+    <br />
+  </body>
+</html>
